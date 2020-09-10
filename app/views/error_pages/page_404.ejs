@@ -1,0 +1,10 @@
+<% var css_list = []%>
+    <% var js_list=[]%>
+        <%- include("../partial/header",{css:css_list, js:js_list})%>
+            <%- include("../partial/navbar",{shadow:true})%>
+                <div class="page-error">
+                    <img src="/image/404.png" loading="lazy" class="page-error-image">
+                </div>
+                <%- include("../partial/copyright",{})%>
+                    <%- include("../partial/javascript",{})%>
+                        <%- include("../partial/footer",{})%>

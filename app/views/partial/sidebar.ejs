@@ -1,0 +1,84 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center">
+        <div style="color:white" class="sidebar-brand-text"><strong>Gacha Save</strong></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <!-- <% if(user.role == 1 || (user.groups && (user.groups.includes('admin')))){ %> -->
+    <% if (menu == "admin"){ %>
+    <li class="nav-item active">
+        <% } else{ %>
+    <li class="nav-item">
+        <% } %>
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            aria-controls="collapseOne">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Admin</span></a>
+        </a>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <!-- <% if(user.role == 1 || (user.groups && user.groups.includes('admin'))){ %> -->
+                <a class="collapse-item" href="/panels/admin/ms_panel_users">Users List</a>
+                <a class="collapse-item" href="/panels/admin/ms_panel_users_groups">User Group List</a>
+                <!-- <%}%> -->
+            </div>
+        </div>
+    </li>
+    
+    <% if (menu == "agency" || menu == "perwakilan"){ %>
+        <li class="nav-item active">
+            <% } else{ %>
+        <li class="nav-item">
+            <% } %>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Config</span></a>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <% if(user.role == 1 || (user.groups && user.groups.includes('admin'))){ %> -->
+                    <a class="collapse-item" href="/panels/admin/ms_panel_sp"><i class="fas fa-tags"></i> &nbsp Genre</a>
+                    <a class="collapse-item" href="/panels/agency/"><i class="fas fa-user-friends"></i> &nbsp Games</a>
+                    <a class="collapse-item" href="/panels/perwakilan/"><i class="fas fa-globe-europe"></i> &nbsp Themes</a>
+                    <a class="collapse-item" href="/panels/email/"><i class="fas fa-envelope"></i> &nbsp Email</a>
+                    <!-- <%}%> -->
+                </div>
+            </div>
+        </li>
+    <!-- <%}%> -->
+
+   
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <% if (menu == "change_password"){ %>
+    <li class="nav-item active">
+    <% } else{ %>
+    <li class="nav-item">
+    <% } %>
+        <a class="nav-link" href="/panels/change_password">
+            <i class="fas fa-fw fa-key"></i>
+            <span>Ubah Password</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/panels/auth/logout">
+            <i class="fas fa-fw fa-sign-out-alt"></i>
+            <span>Keluar</span></a>
+    </li>
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
+<!-- End of Sidebar -->

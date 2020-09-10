@@ -1,0 +1,56 @@
+<%- include('../partial/header') %>
+
+    <body id="page-top">
+
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <%- include('../partial/sidebar',{user:user, menu: "welcome"}) %>
+
+                <!-- Content Wrapper -->
+                <div id="content-wrapper" class="d-flex flex-column">
+
+                    <!-- Main Content -->
+                    <div id="content">
+
+                        <%- include('../partial/navbar') %>
+
+                            <!-- Begin Page Content -->
+                            <div class="container-fluid" style="padding-left:10px;padding-right:10px;padding-top:10px">
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding-left:10px;padding-right:10px">
+                                        <div class="p-5">
+                                            <div class="text-center">
+                                                <h1>Hi
+                                                    <%- user.username %>,</h1>
+                                                <p>
+                                                    Welcome to <strong>Gacha Save WEB APP</strong>. Choose menu on side menu to continue.
+                                                </p>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.container-fluid -->
+
+                    </div>
+                    <!-- End of Main Content -->
+
+                    <%- include('../partial/footer') %>
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <%- include('../partial/javascript') %>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+    
+    });
+  </script>
+
+    </html>

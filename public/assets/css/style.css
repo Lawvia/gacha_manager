@@ -1,0 +1,667 @@
+.wrapper {
+    font-family: 'Titillium Web', sans-serif;
+    display: flex;
+    align-items: stretch;
+    background-color:#EFF0F3;
+}
+
+#loader{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-image: url('../images/loader.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300px;
+    margin: -60px 0 0 -60px;
+    z-index: 10001;
+}
+
+
+#exampleModalCenter{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.admin_manage{
+    border-bottom:1px solid black;
+    border-top:1px solid black;
+}
+
+nav#sidebar .admin-manage .manage-navbar li a{
+    padding-left:20px;
+}
+
+.dashboard-grid{
+    margin-bottom: 20px;
+}
+
+.dashboard-icon{
+    margin-left:10px;
+    margin-top:15px;
+}
+
+.huge {
+    font-size: 12px;
+    margin-top:20px;
+    /* margin-left:1px;    */
+}
+
+.dashboard-box{
+    height:70px;
+    margin-left:20px;
+    background-color:#f7f7f7;
+    border:1px solid #dbdbdb;
+    border-radius:2%;
+}
+
+@media(max-width:768px){
+    .dashboard-box{
+        margin-left:0;
+    }
+}
+
+/* .panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: white;
+    background-color: #5cb85c;
+}
+
+.panel-green > a {
+    color: #5cb85c;
+}
+
+.panel-green > a:hover {
+    color: #3d8b3d;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+  
+.panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: white;
+    background-color: #d9534f;
+}
+
+.panel-red > a {
+    color: #d9534f;
+}
+
+.panel-red > a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: white;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow > a {
+    color: #f0ad4e;
+}
+
+.panel-yellow > a:hover {
+    color: #df8a13;
+} */
+
+body,html{
+    background-color:#EFF0F3;
+    /* height: 100%; */
+}
+
+#sidebar {
+    font-family: 'Titillium Web', sans-serif;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
+}
+
+div.dataTables_wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* #manage-incentive-table_wrapper .col-sm-12, #promo-table_wrapper .col-sm-12, #store-info-table_wrapper .col-sm-12, #frontliners-info-table_wrapper .col-sm-12, #incentive-information-table_wrapper .col-sm-12, #product-incentive-table_wrapper .col-sm-12, #example_wrapper .col-sm-12, #master-fl-hp-table_wrapper .col-sm-12, #fl-sales-table_wrapper .col-sm-12, #flku-table_wrapper .col-sm-12, #fl-incentive-table_wrapper .col-sm-12{
+    overflow-x: auto;
+} */
+
+#incentive-info .col-md-12{
+    overflow-x: auto;
+}
+
+#incentive-navtabs {
+    overflow-x: auto;
+    overflow-y:hidden;
+    flex-wrap: nowrap;
+}
+
+#incentive-navtabs li{
+    width:100%
+ }
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+nav{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#manage-navbar,#manage-sales-navbar, #payout-navbar{
+    padding-left:0px;
+}
+
+#manage-navbar li, #payout-navbar li,#manage-sales-navbar li{
+    list-style-type: none;
+    display: list-item;
+}
+
+#manage-navbar a, #payout-navbar a, #manage-sales-navbar a{
+    background-color:#d1d1d1;
+}
+
+p {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    background: #d1d1d1;
+    color: #fff;
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #9ea0a1;
+}
+
+#sidebar ul.components {
+    background-color: #d1d1d1;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color:#757e88;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:30px;
+    padding-right:20px;
+}
+
+#sidebar ul li a:hover {
+    color: #757e88;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #db0015;
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 50px !important;
+    background: #6d7fcc;
+}
+
+#overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+#content{
+    padding-left:35px;
+    padding-right:35px;
+    padding-top:20px;
+    padding-bottom:20px;
+    /* height:100vh; */
+}
+
+#content h2{
+    margin-bottom:30px;
+}
+
+#otp_confirmation{
+    color:red;
+    font-weight:bold;
+}
+
+.submit_button{
+    width:32%;
+}
+
+.upload_button{
+    width:100%;
+}
+
+.upload_pict_button{
+    width:75%;
+}
+
+#sidebarCollapse{
+    display:none;
+}
+
+#dismiss{
+    display:none;
+}
+
+#div_signin_form{
+    padding-left:60px;
+    padding-right:60px;
+    padding-top:25px;
+    padding-bottom:25px;
+    background:#e5e5e5;
+    border: #bcbcbc;
+    width:500px;
+    margin: 0 auto;
+}
+
+.btn-verify-email, .btn-change-password{
+    width:180px;
+}
+
+.login_button{
+    background-color:#f90202;
+    color: #ffffff;
+}
+
+#fl-sales-table, #flku-table, #fl-incentive-table{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.table-frontliner{
+    display: block;
+    overflow: scroll;
+    overflow:auto;
+}
+
+@media(max-width: 768px){
+    .submit_button{
+        width:100%;
+    }
+
+    .upload_button, .upload_pict_button{
+        width:45%;
+    }
+
+    #sidebarCollapse{
+        display:block;
+        float:left;
+        background-color: transparent;
+        color: #757e88;
+        border:none;
+    }
+
+    .btn-verify-email, .btn-change-password{
+        width:100%;
+    }
+
+    #div_signin_form{
+        padding-left:30px;
+        padding-right:30px;
+        padding-top:25px;
+        padding-bottom:25px;
+        background:#e5e5e5;
+        border: #bcbcbc;
+        width:100%;
+    }
+
+    .navbar-nav .ml-auto li a{
+        min-height:20px;
+    }
+
+    nav.navbar-top-polytron{
+        display:none;
+    }
+}
+
+#promoBtn{
+    width:100%;
+}
+
+@media(max-width: 768px){
+    .wrapper {
+        display: block;
+    }
+
+    #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        /*height: 100vh;*/
+        height: 300vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* top layer */
+        z-index: 9999;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        /* full screen */
+        width: 100vw;
+        /*height: 100vh;*/
+        height: 300vh;
+        /* transparent black */
+        background: rgba(0, 0, 0, 0.7);
+        /* middle layer, i.e. appears below the sidebar */
+        z-index: 998;
+        opacity: 0;
+        /* animate the transition */
+        transition: all 0.5s ease-in-out;
+    }
+    /* display .overlay when it has the .active class */
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    #dismiss {
+        display:block;
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        /* top right corner of the sidebar */
+        top: 10px;
+        right: 10px;
+    }
+}
+
+.email_landing_page{
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+    text-align:center;
+}
+
+.email_div{
+    animation:animatetop 2s;
+}
+
+@keyframes animatetop{
+    from{
+        top:-300px;
+        opacity:0
+    }
+    to{
+        top:0;
+        opacity:1
+    }
+}
+
+.verify_information{
+    animation:opac 4s
+}
+
+.email_photo{
+    animation: a-ef 2s 2s 1 cubic-bezier(.4,0,.2,1) forwards;
+}
+
+/*Input OTP*/
+.otp{
+    width: 5%;
+}
+
+@keyframes a-ef{
+    24% {
+        animation-timing-function: cubic-bezier(.8,0,.6,1);
+        transform: scaleY(.42);
+    }
+
+    52% {
+        animation-timing-function: cubic-bezier(.63,0,.2,1);
+        transform: scaleY(.98);
+    }
+    83% {
+        animation-timing-function: cubic-bezier(.8,0,.84,1);
+        transform: scaleY(.96);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+@keyframes opac{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
+}
+
+
+
+#imgInvoicePhoto:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modalWarranty {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.contentWarranty {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.contentWarranty, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .contentWarranty {
+        width: 100%;
+    }
+}
+
+/*Admin jQuery UI AutoComplete*/
+.ui-autocomplete-input {
+    border: none; 
+    font-size: 14px;
+    width: 300px;
+    margin-bottom: 5px;
+    padding-top: 2px;
+    border: 1px solid #DDD !important;
+    padding-top: 0px !important;
+    z-index: 1511;
+    position: relative;
+  }
+  .ui-menu .ui-menu-item a {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 12px;
+  }
+  .ui-autocomplete {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1051 !important;
+    float: left;
+    display: none;
+    min-width: 160px;
+    _width: 160px;
+    padding: 4px 0;
+    margin: 2px 0 0 0;
+    list-style: none;
+    background-color: #ffffff;
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    *border-right-width: 2px;
+    *border-bottom-width: 2px;
+
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+  }
+  .ui-menu-item > a.ui-corner-all {
+      display: block;
+      padding: 3px 15px;
+      clear: both;
+      font-weight: normal;
+      line-height: 18px;
+      color: #555555;
+      white-space: nowrap;
+      text-decoration: none;
+  }
+  .ui-state-hover, .ui-state-active {
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #0088cc;
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        background-image: none;
+  }
+
+  .error{
+      color:red;
+  }

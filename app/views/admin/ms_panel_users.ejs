@@ -1,0 +1,258 @@
+<%- include('../partial/header') %>
+    <link rel="stylesheet" href="/assets/css/tokenfield.css">
+
+    <body id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+                <%- include('../partial/sidebar',{user:user, menu: "admin"}) %>
+                <!-- Content Wrapper -->
+                <div id="content-wrapper" class="d-flex flex-column">
+                    <!-- Main Content -->
+                    <div id="content">
+                        <div class="container-fluid">
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-2 text-gray-800">Daftar User</h1>
+                            <hr>
+                            <button type="button" class="btn btn-danger" style="margin-bottom:5px;color:white" data-toggle="modal" data-target="#addUser" title='Add Users'>
+                        		<i class="fas fa-plus"></i>
+                        		<span>Add</span>
+                    		</button>
+                            <!-- DataTales Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <div class="sales_information">
+                                            <table class="table table-bordered" id="users_table" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>USERNAME</th>
+                                                        <th>ACTIVE</th>
+                                                        <th>ROLE</th>
+                                                        <th>LAST LOGIN</th>
+                                                        <th>CREATED</th>
+                                                        <th>UPDATED</th>
+                                                        <th>ACTION</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%- include('../modals/ms_panel_users/modal_add_users'); %>
+                    <%- include('../modals/ms_panel_users/modal_edit_users'); %>
+                        <%- include('../modals/ms_panel_users/modal_reset_password_users'); %>
+
+                            <%- include('../partial/javascript'); %>
+                                <script src="/assets/js/tokenfield.min.js"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+                                <script>
+                                    var group
+                                    var update_group
+
+                                    //textbox for add modal
+                                    function showTextBox() {
+                                        var select_status = $('#role').val();
+                                        if (select_status == '2') {
+                                            $('#groupList').show();
+                                        } else {
+                                            $('#groupList').hide();
+                                        }
+                                    };
+
+                                    $(document).ready(function() {
+                                        showTextBox()
+
+                                        //show groups
+                                        group = new Tokenfield({
+                                            el: document.querySelector('#user_group'),
+                                            items: <%- JSON.stringify(groups) %>,
+                                            newItems: false,
+                                            minChars: 0
+                                        });
+                                        update_group = new Tokenfield({
+                                            el: document.querySelector('#update_user_group'),
+                                            items: <%- JSON.stringify(groups) %>,
+                                            newItems: false,
+                                            minChars: 0
+                                        });
+                                        $('#users_table').DataTable({
+                                            "processing": true,
+                                            "serverSide": true,
+                                            "ajax": {
+                                                "url": '/panels/admin/ms_panel_users/list',
+                                                "method": "POST",
+                                            },
+                                            "columns": [{
+                                                "data": "username"
+                                            }, {
+                                                "data": "active",
+                                                render: function(data, type, row) {
+                                                    if (data == 1)
+                                                        return "<i class='fas fa-play text-success'></i>"
+                                                    else if (data == 0)
+                                                        return "<i class='fas fa-stop text-danger'></i>"
+                                                }
+                                            }, {
+                                                "data": "role",
+                                                render: function(data, type, row) {
+                                                    if (data == 2)
+                                                        return "User"
+                                                    else if (data == 1)
+                                                        return "Admin"
+                                                }
+                                            }, {
+                                                "data": "last_login",
+                                                render: function(data, type, row) {
+                                                    if (!data) return "<i class='not-set'>Not set</i>"
+                                                    if (type === "sort" || type === "type") {
+                                                        return data;
+                                                    }
+                                                    return moment(data).format("DD-MM-YYYY, h:mm:ss")
+                                                }
+                                            }, {
+                                                "data": "created",
+                                                render: function(data, type, row) {
+                                                    if (!data) return "<i class='not-set'>Not set</i>"
+                                                    if (type === "sort" || type === "type") {
+                                                        return data;
+                                                    }
+                                                    return moment(data).format("DD-MM-YYYY, h:mm:ss")
+                                                }
+                                            }, {
+                                                "data": "updated",
+                                                render: function(data, type, row) {
+                                                    if (!data) return "<i class='not-set'>Not set</i>"
+                                                    if (type === "sort" || type === "type") {
+                                                        return data;
+                                                    }
+                                                    return moment(data).format("DD-MM-YYYY, h:mm:ss")
+                                                }
+                                            }, {
+                                                orderable: false,
+                                                searchable: false,
+                                                data: {
+                                                    "id_panel_users": "id_panel_users",
+                                                    "is_active": "is_active"
+                                                },
+                                                render: function(data, type, row) {
+                                                    var button = "<div>"
+                                                    if (data.role == 2) {
+                                                        button += "<a onclick='do_update_group(\"" + data.id_panel_users + "\")'  title='Edit Groups'><i style='color:green' class='fas fa-edit'></i></a>"
+                                                        button += " | "
+                                                    }
+                                                    button += "<a onclick='do_reset_password(\"" + data.id_panel_users + "\")' title='Reset password'><i style='color:#3350E2;' class='fas fa-key'></i></a>"
+                                                    button += " | "
+                                                    if (!data.active)
+                                                        button += "<a onclick='active(\"" + data.id_panel_users + "\"," + data.active + ")' title='Activate'><i style='color:green' class='fas fa-play'></i></a>"
+                                                    else
+                                                        button += "<a onclick='active(\"" + data.id_panel_users + "\"," + data.active + ")' title='Deactivate'><i style='color:red' class='fas fa-pause'></i></a>"
+                                                    button += "</div>"
+                                                    return button
+                                                }
+                                            }]
+                                        });
+                                        $('#buttonAddUser').click(function() {
+                                            do_add_user()
+                                        })
+                                    });
+
+                                    function posting(data) {
+                                        $.ajax({
+                                            method: "POST",
+                                            url: data.url,
+                                            data: data.param
+                                        }).done(data.done);
+                                    };
+
+                                    //add user
+                                    function do_add_user() {
+                                        var items = []
+                                        for (var i = 0; i < group.getItems().length; i++) {
+                                            items.push(group.getItems()[i].id)
+                                        }
+                                        $.ajax({
+                                            method: "POST",
+                                            url: "/panels/admin/ms_panel_users/add_user",
+                                            data: {
+                                                username: $("#username").val(),
+                                                role: $("#role").val(),
+                                                items: items,
+                                            }
+                                        }).done(function(res) {
+                                            if (res.status == "SUCCESS") {
+                                                alert(res.status)
+                                                window.location.href = "/panels/admin/ms_panel_users"
+                                            } else {
+                                                alert(res.message)
+                                            }
+                                        })
+                                    };
+
+                                    //update user groups
+                                    function do_update_group(id_panel_users) {
+                                        $.ajax({
+                                            method: "POST",
+                                            url: "/panels/admin/ms_panel_users/get",
+                                            data: {
+                                                id_panel_users: id_panel_users
+                                            }
+                                        }).done(function(res) {
+                                            update_group.addItems(res.data.groups);
+                                            update_group.showSuggestions()
+                                            $("#id_panel_users1").val(res.data.id_panel_users)
+                                            $('#editUser').modal('show');
+                                        })
+                                    };
+
+                                    //for edit
+                                    $('#buttonEditUser').click(function() {
+                                        $('#formEditUser').submit();
+                                    })
+                                    $("#formEditUser").submit(function(e) {
+                                        var items = []
+                                        for (var i = 0; i < update_group.getItems().length; i++) {
+                                            items.push(update_group.getItems()[i].id)
+                                        }
+                                        posting({
+                                            url: "/panels/admin/ms_panel_users/edit_user",
+                                            param: {
+                                                id_panel_users: $("#id_panel_users1").val(),
+                                                items: items
+                                            },
+                                            done: function(data) {
+                                                alert(data.status)
+                                                if (data.status == "SUCCESS") {
+                                                    $('#editUser').modal('hide')
+                                                    window.location.href = "/panels/admin/ms_panel_users/"
+                                                }
+                                            }
+                                        })
+                                        e.preventDefault();
+                                    });
+
+                                    //for reset password
+                                    function do_reset_password(id_panel_users) {
+                                        $('#id_panel_users2').val(id_panel_users);
+                                        $('#resetPassword').modal('show');
+                                    };
+
+                                    function active(id_panel_users, isActive) {
+                                        if (confirm("Are you sure want to " + (isActive ? "deactive" : "activate") + "?")) {
+                                            posting({
+                                                url: "/panels/admin/ms_panel_users/active",
+                                                param: {
+                                                    id_panel_users: id_panel_users,
+                                                },
+                                                done: function(data) {
+                                                    alert(data.status);
+                                                    window.location.href = "/panels/admin/ms_panel_users";
+                                                }
+                                            })
+                                        }
+                                    };
+                                </script>

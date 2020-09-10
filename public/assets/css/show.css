@@ -1,0 +1,166 @@
+body {
+    line-height: 1;
+}
+
+.winner-list-background {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.winner-list-polytron-logo {
+    height:20vh;
+    position: fixed;
+    top: 0;
+    right: 8vh;
+}
+
+.coupon-code-container {
+    position: fixed;
+    bottom: 8vh;
+    left: 4vh;
+    height: 7vh;
+}
+
+.coupon-code-title {
+    font-size: 3vh;
+    color: #FFF;
+    line-height: 1;
+    padding-left: 0.5vh;
+    font-family: GothamLight;
+}
+
+.coupon-code-value {
+    font-family: GothamBold;
+    font-size: 8vh;
+    color: #fff;
+    line-height: 1;
+}
+
+.winner-table-container {
+    margin-left: 35vh;
+    margin-right: 25vh;
+}
+
+.winner-table {
+    width: 100%;
+}
+
+.winner-table tbody {
+    width: 100%;
+}
+
+.winner-scroller {
+    margin-top: 5vh;
+    overflow-y: auto;
+    max-height: 60vh;
+    -ms-overflow-style: none;
+}
+
+.winner-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.winner-table thead th {
+    position: sticky;
+    top: 0;
+}
+
+.winner-table th {
+    background-color: #C6C680;
+    color: #FFF;
+}
+
+.winner-table td {
+    background-color: rgba(198, 198, 128, 0.5);
+    color: #FFF;
+}
+
+.winner-table th, .winner-table td {
+    border-left: 0.5vh solid transparent;
+    border-right: 0.5vh solid transparent;
+    border-bottom: 1vh solid transparent;
+    background-clip: padding-box;
+    padding: 1vh 2vh 1.5vh;
+    font-size: 2.4vh;
+    font-family: GothamBold;
+}
+
+.winner-prize-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1
+}
+
+.winner-prize-congratulation {
+    height: 49px;
+    font-size: 49px;
+    font-weight: bold;
+    margin-top: 235px;
+    font-family: GothamBold;
+}
+
+.winner-prize-store {
+    font-size: 133px;
+    margin: 20px 0;
+    font-family: GothamBold;
+}
+
+.nominee-coupon-code-container {
+    width: 300px;
+    position: fixed;
+    bottom: 75px;
+    left: 40px;
+    height: 84px;
+    margin: auto 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nominee-table {
+    width: 100%;
+}
+
+.nominee-table tbody {
+    width: 100%;
+}
+
+.nominee-scroller {
+    margin-top: 5vh;
+    overflow-y: auto;
+    max-height: 60vh;
+    -ms-overflow-style: none;
+}
+
+.nominee-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.nominee-table thead th {
+    position: sticky;
+    top: 0;
+}
+
+.nominee-table th {
+    background-color: rgba(248, 238, 174, 1);
+    color: #000;
+}
+
+.nominee-table td {
+    background: rgba(248, 238, 174, 0.5);
+    color: #FFF;
+}
+
+.nominee-table th, .nominee-table td {
+    border-left: 0.5vh solid transparent;
+    border-right: 0.5vh solid transparent;
+    border-bottom: 1vh solid transparent;
+    background-clip: padding-box;
+    padding: 1vh 2vh;
+    font-size: 2.4vh;
+    font-family: GothamBold;
+}

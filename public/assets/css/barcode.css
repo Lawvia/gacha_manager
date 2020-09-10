@@ -1,0 +1,52 @@
+/*!
+ * Milligram v1.3.0
+ * https://milligram.github.io
+ *
+ * Copyright (c) 2017 CJ Patoilo
+ * Licensed under the MIT license
+ */
+
+*,
+*:after,
+*:before {
+    box-sizing: inherit
+}
+
+#video {
+    display: block;
+    /* margin-top: -85px; */
+    overflow: hidden;
+    /* height: 300px; */
+    margin: auto;
+    width: 70%;
+}
+
+#div-camera {
+    height: 150px;
+    overflow-y: hidden;
+}
+
+code {
+    background: #f4f5f6;
+    border-radius: .4rem;
+    font-size: 86%;
+    margin: 0 .2rem;
+    padding: .2rem .5rem;
+    white-space: nowrap
+}
+
+pre {
+    background: #f4f5f6;
+    border-left: 0.3rem solid #9b4dca;
+    overflow-y: hidden
+}
+
+pre>code {
+    border-radius: 0;
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre
+}
+
+
+/*# sourceMappingURL=milligram.min.css.map */
