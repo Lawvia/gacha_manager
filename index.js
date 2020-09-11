@@ -2,21 +2,15 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const express = require('express')
 const app = express()
-const redis = require('redis')
 const http = require('http').createServer(app)
 const path = require('path')
 const c_main = require('./app/controllers/controller_main')
 const app_config = require('./app/config/app.json')
 const cookieParser = require('cookie-parser')
-const redis_config = require('./app/config/redis.json')
 const session = require('express-session')
-const RedisStore = require('connect-redis')(session)
 const passport = require("./app/module/passport")
 const flash = require('express-flash');
-const client = redis.createClient({
-    host: redis_config.host,
-    port: redis_config.port,
-})
+
 
 
 // Enable proxy for get secure https
