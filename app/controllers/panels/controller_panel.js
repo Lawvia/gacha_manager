@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const c_auth = require('./controller_auth')
-// const c_train = require('./controller_training')
+const c_genre = require('./controller_genre')
 const c_admin = require('../admin/controller_admin')
 // const c_karyawan = require('./controller_karyawan')
 // const c_surat_peringatan = require('./controller_surat_peringatan')
@@ -9,7 +9,7 @@ const c_admin = require('../admin/controller_admin')
 // const c_history_pekerjaan = require('./controller_history_pekerjaan')
 // const c_perwakilan = require('./controller_perwakilan')
 // const c_agency = require('./controller_agency')
-// const c_change_password = require('./controller_change_password')
+const c_change_password = require('./controller_change_password')
 // const c_email = require('./controller_email')
 
 router.use('/auth', c_auth)
@@ -29,13 +29,13 @@ router.get('/', function(req, res) {
     res.render("pages/welcome", { user: req.user })
 });
 
-// router.use('/karyawan', c_karyawan)
+router.use('/genre', c_genre)
 // router.use('/surat_peringatan', c_surat_peringatan)
 // router.use('/performance_appraisal', c_performance_appraisal)
 // router.use('/history_pekerjaan', c_history_pekerjaan)
 // router.use('/perwakilan', c_perwakilan)
 // router.use('/agency', c_agency)
-// router.use('/change_password', c_change_password)
+router.use('/change_password', c_change_password)
 // router.use('/email', c_email)
 
 module.exports = router

@@ -1,0 +1,111 @@
+<%- include('../partial/header') %>
+<link rel="stylesheet" href="/assets/css/tokenfield.css">
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <%- include('../partial/sidebar',{user:user, menu: "genre"}) %>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <%- include('../partial/topbar',{user:user, menu: "genre"}) %>
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Daftar Genre</h1>
+                    <hr>
+                    <button type="button" class="btn btn-danger" style="margin-bottom:5px;color:white"
+                        data-toggle="modal" data-target="#addGenre" title='Add Genre' onclick='do_empty_field()'>
+                        <i class="fas fa-plus"></i>
+                        <span>Add</span>
+                    </button>
+
+                    <% if (message_success != "") { %>
+                    <div class="alert alert-success">
+                        <%= message_success %>
+                    </div>
+                    <% } %>
+
+                    <% if (message_fail != "") { %>
+                    <div class="alert alert-danger">
+                        <%= message_fail %>
+                    </div>
+                    <% } %>
+
+                    <% if (message_warning != "") { %>
+                    <div class="alert alert-warning">
+                        <%= message_warning %>
+                    </div>
+                    <% } %>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="sales_information">
+                                    <table class="table table-bordered" id="users_table" width="100%" cellspacing="0">
+                                        <thead>
+                                            <% for(var i=0; i < genres.length; i++) { %>
+                                            <tr>
+                                                <td width="100" align="center">
+                                                    <%= i + 1 %>
+                                                </td>
+                                                <td width="40%">
+                                                    <%= genres[i].name%>
+                                                </td>
+                                                <td width="100" align="center">
+                                                    <a data-target='#editGenre' data-toggle='modal'
+                                                        onclick='do_show_edit_genre("<%= genres[i].id %>")'
+                                                        class='hrefEditGenre' id='editGenre' style='cursor:pointer'><i
+                                                            style="color:green;" class="fas fa-edit"></i></a>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%- include('../modals/ms_genre/modal_add_genres') %>
+                        <%- include('../partial/javascript'); %>
+                        <script>
+                            $(document).ready(function () {
+                                $('#groups_table').DataTable({
+                                    paging: false,
+                                });
+                                $('#buttonAddGenre').click(function () {
+                                    do_add_groups()
+                                })
+                            });
+
+                            function do_add_groups() {
+                                $("#formAddGenre").validate({
+                                    rules: {
+                                        genre_name: "required"
+                                    },
+                                    submitHandler: function (form) {
+                                        form.submit();
+                                    }
+                                });
+                            }
+
+                            function do_show_edit_genre(id) {
+                                $.ajax({
+                                    method: "POST",
+                                    url: "/panels/genre/get",
+                                    data: {
+                                        genre_id: id
+                                    }
+                                }).done(function (res) {
+                                    $("#genre_id").val(id)
+                                    $("#genre_name").val(res.data.name)
+                                    $('#addGenre').modal('show');
+                                })
+                            };
+
+                            function do_empty_field() {
+                                $("#genre_id").val("")
+                                $("#genre_name").val("")
+                            }
+                        </script>

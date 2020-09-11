@@ -33,12 +33,12 @@
         <% } else{ %>
     <li class="nav-item">
         <% } %>
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
             aria-controls="collapseOne">
             <i class="fas fa-fw fa-users"></i>
             <span>Admin</span></a>
         </a>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <% if(user.role == 1 || (user.groups && user.groups.includes('admin'))){ %> -->
                 <a class="collapse-item" href="/panels/admin/ms_panel_users">Users List</a>
@@ -48,7 +48,7 @@
         </div>
     </li>
     
-    <% if (menu == "agency" || menu == "perwakilan"){ %>
+    <% if (menu == "genre" || menu == "perwakilan"){ %>
         <li class="nav-item active">
             <% } else{ %>
         <li class="nav-item">
@@ -61,10 +61,10 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!-- <% if(user.role == 1 || (user.groups && user.groups.includes('admin'))){ %> -->
-                    <a class="collapse-item" href="/panels/admin/ms_panel_sp"><i class="fas fa-tags"></i> &nbsp Genre</a>
-                    <a class="collapse-item" href="/panels/agency/"><i class="fas fa-user-friends"></i> &nbsp Games</a>
-                    <a class="collapse-item" href="/panels/perwakilan/"><i class="fas fa-globe-europe"></i> &nbsp Themes</a>
-                    <a class="collapse-item" href="/panels/email/"><i class="fas fa-envelope"></i> &nbsp Email</a>
+                    <a class="collapse-item" href="/panels/genre"><i class="fas fa-tags"></i> &nbsp Genre</a>
+                    <a class="collapse-item" href="/panels/games/"><i class="fas fa-gamepad"></i> &nbsp Games</a>
+                    <!-- <a class="collapse-item" href="/panels/perwakilan/"><i class="fas fa-globe-europe"></i> &nbsp Themes</a>
+                    <a class="collapse-item" href="/panels/email/"><i class="fas fa-envelope"></i> &nbsp Email</a> -->
                     <!-- <%}%> -->
                 </div>
             </div>
