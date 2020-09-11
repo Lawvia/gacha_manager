@@ -34,11 +34,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname + '/public')))
 app.use(session({
-    store: new RedisStore({
-        client: client,
-        ttl: 3600,
-        logErrors: true
-    }),
     secret: app_config.secret,
     resave: false,
     unset: 'destroy',
