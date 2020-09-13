@@ -3,7 +3,7 @@ const router = express.Router()
 const c_auth = require('./controller_auth')
 const c_genre = require('./controller_genre')
 const c_admin = require('../admin/controller_admin')
-// const c_karyawan = require('./controller_karyawan')
+const c_games = require('./controller_games')
 // const c_surat_peringatan = require('./controller_surat_peringatan')
 // const c_performance_appraisal = require('./controller_performance_appraisal')
 // const c_history_pekerjaan = require('./controller_history_pekerjaan')
@@ -30,6 +30,7 @@ router.get('/', function(req, res) {
 });
 
 router.use('/genre', c_genre)
+router.use('/games', c_games)
 // router.use('/surat_peringatan', c_surat_peringatan)
 // router.use('/performance_appraisal', c_performance_appraisal)
 // router.use('/history_pekerjaan', c_history_pekerjaan)

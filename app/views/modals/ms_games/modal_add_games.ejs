@@ -1,0 +1,71 @@
+<!-- Modal ADD -->
+<div class="modal fade" id="addGames" tabindex="-1" role="dialog" aria-labelledby="addModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalTitle">Add/Update Games</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+            </div>
+            <form id="formAddGames">
+                <div class="modal-body">
+                    <div class="form-group" style="display:none">
+                        <input type="hidden" name="games_id" id="games_id" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Nama Games</label>
+                        <input type="text" id="games_name" class="form-control" name="games_name" placeholder="Nama Games" />
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label>Description</label>
+                        <br>
+                        <textarea class="form-control" id="input_description" name="input_description"> </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Reference/Store Link</label>
+                        <input type="text" id="games_link" class="form-control" name="games_link" placeholder="Link"/>
+                    </div>
+
+                    <!-- Genre -->
+                    <div class="form-group">
+                        <label for="title">Genre</label>
+                        <br>
+                        <select id="genre_id" name="genre_id" class="form-control">
+                            <option value="" selected disabled hidden>Select</option>
+                            <% if(genres){ %>
+                                <% for(let i=0; i < genres.length;i++){ %>
+                                    <option value="<%= genres[i].id %>"><%= genres[i].name %></option>
+                                <% } %>
+                            <% } %>
+                        </select>
+                    </div>
+
+                    <!-- image -->
+                    <div class="form-group">
+                        <label for="title">Games Icon</label>
+                        <!-- <input type="file" class="form-control-file upload-image" id="icon_games" name="icon_games" accept="image/*" for="games_image"> -->
+                        <div class="custom-file">
+                            <input class="custom-file-input" type="file" id="icon_games" name="icon_games" for="games_image" accept="image/*">
+                            
+                            <label for="customFile" class="custom-file-label">
+                                Upload File
+                            </label>
+                        </div>
+                    </div>
+                    <div id="fotoImagePrev">
+                        <img src="" id="games_image" class="col-sm-3" style="max-width: 250px;max-height: 150px;object-fit: contain; padding-bottom:20px">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="buttonAddGames" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

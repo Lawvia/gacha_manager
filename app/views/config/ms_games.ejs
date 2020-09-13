@@ -1,0 +1,265 @@
+<%- include('../partial/header') %>
+<link rel="stylesheet" href="/assets/css/tokenfield.css">
+<style>
+    .fir-clickcircle {
+    height: 80px;
+    width: 80px;
+    border-radius: 20px;
+    cursor: pointer;
+    }
+
+    .fir-image-figure {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+    text-decoration: none;
+    }
+
+    .fir-image-figure .caption, .fir-image-figure figcaption {
+    padding-left: 15px;
+    }
+
+    @media only screen and (max-width: 300px) {
+        .fir-image-figure {
+            display: block;
+            margin-bottom: 20px;
+        }
+        figure figcaption {
+            padding-left: 0px;
+        }
+    }
+
+    html.wf-active .fir-image-figure .fig-author-figure-title {
+    font-family: var(--fir-font-header);
+    font-size: 16px;
+    }
+
+    .fir-image-figure .fig-author-figure-title {
+    color: var(--fir-color-grey);
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 2px;
+    }
+
+    .fir-imageover {
+    position: relative;
+    display: flex;
+    }
+
+    .fir-imageover-color {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    background: var(--fir-blue-twitter-alpha);
+    background-image: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+    animation: fadeInFadeOut 2s infinite;
+    top: 0;
+    left: 0;
+    }
+
+    .fir-imageover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: fadeInFadeOut 2s infinite;
+    }
+
+    @keyframes fadeInFadeOut {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        background-color: #bbb;
+        border-radius: 50%;
+        float: right;
+        margin-top: 5px
+    }
+</style>
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <%- include('../partial/sidebar',{user:user, menu: "games"}) %>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <%- include('../partial/topbar',{user:user, menu: "games"}) %>
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Daftar Games</h1>
+                    <hr>
+                    <button type="button" class="btn btn-danger" style="margin-bottom:5px;color:white"
+                        data-toggle="modal" data-target="#addGames" title='Add Games' onclick='do_empty_field()'>
+                        <i class="fas fa-plus"></i>
+                        <span>Add</span>
+                    </button>
+
+                    <% if (message_success != "") { %>
+                    <div class="alert alert-success">
+                        <%= message_success %>
+                    </div>
+                    <% } %>
+
+                    <% if (message_fail != "") { %>
+                    <div class="alert alert-danger">
+                        <%= message_fail %>
+                    </div>
+                    <% } %>
+
+                    <% if (message_warning != "") { %>
+                    <div class="alert alert-warning">
+                        <%= message_warning %>
+                    </div>
+                    <% } %>
+
+                    <br><br>
+                    <!-- Data -->
+                    <div class="card-columns">
+                        <% for(var i=0; i < games.length; i++) { %>
+                            <div class="card shadow mb-4">
+                                <div class="card-body">
+                                    <% if (games[i].is_active == 1){ %>
+                                        <span class="dot" id="dot-status-0-new" style="background-color: rgb(50, 205, 50);" data-toggle="tooltip" data-placement="top" title="Active"></span>
+                                    <% }else{ %>
+                                        <span class="dot" id="dot-status-0-new" style="background-color: rgb(221, 57, 57);" data-toggle="tooltip" data-placement="top" title="InActive"></span>
+                                    <% } %>
+                                    <figure class="fir-image-figure">
+                                        <a class="fir-imageover" rel="noopener" target="_blank" href="<%= games[i].link %>">
+                                          <img class="fir-author-image fir-clickcircle" src="<%= games[i].image %>" alt="gacha-save">
+                                          <div class="fir-imageover-color"></div>
+                                          <!-- <img class="fir-imageover-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/twitter-logo.png" /> -->
+                                        </a>
+                                      
+                                        <figcaption>
+                                          <div class="fig-author-figure-title"><strong style="font-size:larger"><%= games[i].name %></strong></div>
+                                          
+                                          <div class="fig-author-figure-title"><%= games[i].genre_name %></div>
+                                          
+                                          <div class="fig-author-figure-title"><a class="btn btn-outline-info btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            Details
+                                          </a></div>
+                                          <div class="collapse" id="collapseExample" style="margin-top: 10px;">
+                                            <div class="card card-body border-bottom-info"><%- games[i].description %></div>
+                                          </div>
+                                        </figcaption>
+                                    </figure>
+                                    <p class="card-text"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Account Saved: <%= saved[i].saved_account %> <a href="<%= games[i].link %>" class="badge badge-pill badge-success" style="float: right;">LINK</a></p>    
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-warning btn-sm" data-target='#editGames' data-toggle='modal'
+                                    onclick='do_show_edit_games("<%= games[i].id %>")' id='editGames'>Edit</button>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <%- include('../modals/ms_games/modal_add_games') %>
+            <%- include('../partial/footer') %>
+        </div>
+    </div>
+</body>
+
+
+<%- include('../partial/javascript'); %>
+<script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+<script>
+let notifMsgEditor;
+
+$(document).ready(function () {
+    // ckeditor
+    ClassicEditor.create(document.getElementById('input_description'), {
+        removePlugins: ['Table', 'MediaEmbed','image', 'image2', 'upload'],
+    }).then(editor => {
+        notifMsgEditor = editor
+    }).catch(error => {
+        console.error(error);
+    });
+
+    $('#groups_table').DataTable({
+        paging: false,
+    });
+    $('#buttonAddGames').click(function () {
+        // do_add_groups()
+        console.log("adsadad")
+        var textData = notifMsgEditor.getData();
+        if (textData.substring(0, 3) == "<p>") {
+            textData = textData.slice(3)
+        }
+
+        if (textData.slice(-4) == "</p>") {
+            textData = textData.substring(0, textData.length - 4);
+        }
+
+        $("#formAddGames").validate({
+            rules: {
+                games_name: "required",
+                input_description: "required",
+                games_link: "required",
+                genre_id: "required"
+            },
+            submitHandler: function (form) {
+                do_add_games();
+            }
+        });
+
+
+        console.log(textData)
+    })
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    function readImage(data) {
+        if (data.files && data.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#games_image').attr('src', e.target.result);
+                image.style.display = "block";
+            }
+            reader.readAsDataURL(data.files[0]);
+        }
+    }
+    $('#icon_games').change(function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        readImage(this);
+    });
+});
+
+function do_add_games() {
+    console.log("aadsada")
+}
+
+function do_show_edit_genre(id) {
+    $.ajax({
+        method: "POST",
+        url: "/panels/genre/get",
+        data: {
+            genre_id: id
+        }
+    }).done(function (res) {
+        $("#genre_id").val(id)
+        $("#genre_name").val(res.data.name)
+        $('#addGames').modal('show');
+    })
+};
+
+function do_empty_field() {
+    $("#games_id").val("")
+    $("#games_name").val("")
+    $("#games_link").val("")
+    $("#genre_id").val("")
+}
+</script>

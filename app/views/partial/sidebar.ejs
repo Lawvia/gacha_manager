@@ -48,7 +48,7 @@
         </div>
     </li>
     
-    <% if (menu == "genre" || menu == "perwakilan"){ %>
+    <% if (menu == "genre" || menu == "games"){ %>
         <li class="nav-item active">
             <% } else{ %>
         <li class="nav-item">
@@ -62,7 +62,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!-- <% if(user.role == 1 || (user.groups && user.groups.includes('admin'))){ %> -->
                     <a class="collapse-item" href="/panels/genre"><i class="fas fa-tags"></i> &nbsp Genre</a>
-                    <a class="collapse-item" href="/panels/games/"><i class="fas fa-gamepad"></i> &nbsp Games</a>
+                    <a class="collapse-item" href="/panels/games"><i class="fas fa-gamepad"></i> &nbsp Games</a>
                     <!-- <a class="collapse-item" href="/panels/perwakilan/"><i class="fas fa-globe-europe"></i> &nbsp Themes</a>
                     <a class="collapse-item" href="/panels/email/"><i class="fas fa-envelope"></i> &nbsp Email</a> -->
                     <!-- <%}%> -->

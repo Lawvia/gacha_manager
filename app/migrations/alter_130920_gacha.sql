@@ -9,4 +9,6 @@ INSERT INTO `ms_server` (`id`, `name`, `created`, `updated`) VALUES (NULL, 'Kore
 INSERT INTO `ms_server` (`id`, `name`, `created`, `updated`) VALUES (NULL, 'Global', current_timestamp(), current_timestamp());
 INSERT INTO `ms_server` (`id`, `name`, `created`, `updated`) VALUES (NULL, 'SEA', current_timestamp(), current_timestamp());
 
-ALTER TABLE `tr_user_account` ADD `server_id` INT NOT NULL AFTER `description`; 
+ALTER TABLE `tr_user_account` ADD `server_id` INT NOT NULL AFTER `description`;
+
+ALTER TABLE `ms_games` ADD `link` VARCHAR(255) NOT NULL AFTER `description`;
